@@ -1,0 +1,25 @@
+server:
+  port: 8080
+fx:
+  rates:
+    url: https://api.exchangerate.host/latest
+camel:
+  springboot:
+    name: ServicesRest
+management:
+  endpoints:
+    enabled-by-default: true
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: h2
+    password: user
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+  main:
+    allow-bean-definition-overriding: true
+  h2:
+    console:
+      enabled: true
