@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FxRatesService {
+public class FxRatesService implements RatesService {
 
   public FxRatesService(RateRepository rateRepository,
       FxRatesGateway fxRatesGateway) {
@@ -32,7 +32,7 @@ public class FxRatesService {
     }
   }
 
-  public List<FxRate> getAllRates() {
+  private List<FxRate> getAllRates() {
     var rates = fxRatesGateway.getFxRates();
     return rates.entrySet()
         .stream()

@@ -18,6 +18,10 @@ The API becomes available on `http://localhost:8080/camel/api/rates`
 
 * Update the integration tests to check that the database state is correct after each test
 
+# Bonus points
+
+* Integration tests should cover errors as well
+
 # Example CURL requests
 
 `

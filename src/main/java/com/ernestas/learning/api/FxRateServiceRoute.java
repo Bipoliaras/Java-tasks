@@ -2,7 +2,7 @@ package com.ernestas.learning.api;
 
 import com.ernestas.learning.domain.FxRate;
 import com.ernestas.learning.domain.RequestRate;
-import com.ernestas.learning.fx.FxRatesService;
+import com.ernestas.learning.fx.RatesService;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class FxRateServiceRoute extends RouteBuilder {
 
-  public FxRateServiceRoute(FxRatesService fxRatesService) {
-    this.fxRatesService = fxRatesService;
+  public FxRateServiceRoute(RatesService ratesService) {
+    this.ratesService = ratesService;
   }
 
-  private final FxRatesService fxRatesService;
+  private final RatesService ratesService;
 
   @Override
   public void configure() {
@@ -25,7 +25,7 @@ public class FxRateServiceRoute extends RouteBuilder {
         .process(
             exchange -> {
               RequestRate requestRate = exchange.getIn().getBody(RequestRate.class);
-              FxRate rate = fxRatesService.getRateByName(requestRate.getRateName());
+              FxRate rate = ratesService.getRateByName(requestRate.getRateName());
               exchange.getIn().setBody(rate);
             }
         )
